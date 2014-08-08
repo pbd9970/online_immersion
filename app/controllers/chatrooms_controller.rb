@@ -7,6 +7,7 @@ class ChatroomsController < ApplicationController
   end
 
   def new
+    @supported_languages = Languages.all
   end
 
   def edit

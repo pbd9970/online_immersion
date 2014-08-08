@@ -1,3 +1,30 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$facebook: #3B5998;
+#Facebook {
+    background-color: $facebook;
+    border-color: darken($facebook, 20%);
+    &:hover {
+       background-color: darken($facebook, 5%);
+   }
+}
+
+$twitter: #33CCFF;
+#Twitter {
+    background-color: $twitter;
+    border-color: darken($twitter, 15%);
+    &:hover {
+       background-color: darken($twitter, 10%);
+   }
+}
+
+$google: #DD4B39;
+#Google {
+    background-color: $google;
+    border-color: darken($google, 15%);
+    &:hover {
+       background-color: darken($google, 5%);
+   }
+}
