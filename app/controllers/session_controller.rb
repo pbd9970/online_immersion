@@ -22,7 +22,7 @@ class SessionController < ApplicationController
 
     reset_session
     session[:user_id] = token.user.id
-    flash[:success] = "Logged in as #{token.user.first_name}"
+    flash[:success] = "Logged in as #{token.user.first_name} #{token.user.last_name}"
     redirect_to user_path(token.user)
   end
 
@@ -34,17 +34,24 @@ class SessionController < ApplicationController
   private
 
   def get_token(auth, provider)
-    # TODO - condense these next two lines? And see about condensing subsequent two lines
-    token = Token.find_by(uid: "#{auth['uid']}", provider: "#{auth['provider']}")
-    token ||= Token.create(uid: "#{auth['uid']}", provider: "#{auth['provider']}")
-    token.token_key = "#{auth['token_key']}"
-    token.token_expiration = "#{auth['token_expiration_date']}"
+    token_id = {uid: auth['uid'], provider: auth['provider']}
+    token = Token.find_by(token_id) || Token.create(token_id)
+
+    get_token_credentials(token, auth['credentials'])
     verify_user(token, auth, provider)
-    token.save
+    
     token
+  end
+
+  def get_token_credentials(token, credentials)
+    token.save! do |t|
+      t.token_key = credentials.token
+      t.token_expiration = credentials.expires_at
+    end
   end
 
   def verify_user(token, auth, provider)
     token.user ||= User.create_with_omniauth(auth, provider)
+    token.save
   end
 end
