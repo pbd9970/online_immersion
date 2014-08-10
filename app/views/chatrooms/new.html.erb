@@ -2,16 +2,18 @@
 <br />
 <br />
 <div class='container'>
-  <div class='col-md-6'>
+  <div class='col-md-7 container'>
     <h4>Get started by choosing a language for a video chat</h4>
     <p>...................................</p>
-    <div class='list-group'>
       <% @supported_languages.each do |language| %>
-        <%= button_to "#{language.name}", user_chatrooms_path(@user), class: "btn btn-large" %>
+        <div class='col-md-4 text-center'><p>
+          <%= button_to [@user, :chatrooms], params: {language: language.id}, class: 'btn btn-lg btn-primary' do %>
+            <%= language.name %>
+          <% end %>
+        </p></div>
       <% end %>
-    </div>
   </div>
-  <div class='col-md-4'>
-    <%= image_tag image_path 'http://placekitten.com/300/200' %>
+  <div class='col-md-5'>
+    <%= image_tag image_path 'http://placekitten.com/450/300' %>
   </div>
 </div>
