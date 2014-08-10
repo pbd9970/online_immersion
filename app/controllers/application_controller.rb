@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
     end
 
     def correct_user?
-      @user = User.find(params[:id])
+      user_id = params[:user_id] || params[:id]
+      @user = User.find(user_id)
       unless current_user == @user
         redirect_to root_url, :alert => "Access denied."
       end
