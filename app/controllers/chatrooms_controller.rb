@@ -1,4 +1,6 @@
 class ChatroomsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :correct_user?
 
   def index
   end
@@ -7,7 +9,7 @@ class ChatroomsController < ApplicationController
   end
 
   def new
-    @supported_languages = Languages.all
+    @supported_languages = Language.all
   end
 
   def edit
