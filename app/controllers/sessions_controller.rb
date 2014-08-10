@@ -44,7 +44,7 @@ class SessionController < ApplicationController
   end
 
   def get_token_credentials(token, credentials)
-    token.save! do |t|
+    token.update! do |t|
       t.token_key = credentials.token
       t.token_expiration = credentials.expires_at
     end
