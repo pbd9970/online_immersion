@@ -6,6 +6,13 @@ class ChatroomsController < ApplicationController
   end
 
   def create
+    @chatroom = Chatroom.find_by(language_id: params[:language].to_i, matched: false)
+    if @chatroom
+      @chatroom.update(matched: true)
+    else
+      @chatroom = Chatroom.create(chatroom_params)
+    end
+    redirect_to user_chatroom_path(@user, @chatroom)
   end
 
   def new
@@ -22,5 +29,11 @@ class ChatroomsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def chatroom_params
+    params.require(:language_id).permit(:matched)
   end
 end

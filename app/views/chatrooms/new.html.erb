@@ -7,7 +7,7 @@
     <p>...................................</p>
       <% @supported_languages.each do |language| %>
         <div class='col-md-4 text-center'><p>
-          <%= button_to [@user, :chatrooms], params: {language: language.id}, class: 'btn btn-lg btn-primary' do %>
+          <%= button_to [@user, :chatrooms], params: {language_id: language.id}, class: 'btn btn-lg btn-primary' do %>
             <%= language.name %>
           <% end %>
         </p></div>
