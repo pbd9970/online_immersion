@@ -2,22 +2,18 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :users do
-  #resources :users, except: :index do
+  resources :users, except: :index do
     resources :chatrooms
   end
 
   get 'register', to: 'users#new'
 
   resources :session, only: [:new, :destroy]
-  get 'login', to: 'session#new', as: :login
-  get 'logout', to: 'session#destroy', as: :logout
+  get '/:provider/login', to: 'session#new', as: :login
+  get '/logout', to: 'session#destroy', as: :logout
 
-  get '/auth/:provider/callback', to: 'sessions#create'
-  get '/auth/failure', to: 'sessions#failure'
-
-  #development
-  get '/users/paul', to: 'session#paul'
+  get '/auth/:provider/callback', to: 'session#create'
+  get '/auth/failure', to: 'session#failure'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
