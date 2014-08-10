@@ -2,14 +2,23 @@
 <html ng-app="myApp">
 <head>
   <title>OnlineImmersion <%= yield :title %></title>
+  <meta name="description" content="An instant new friend in another language.">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield :nav_bar %>
+  <header>
+    <%= render 'layouts/navigation' %>
+  </header>
 
-<%= yield %>
+  <main role='main'>
+  <div class='container main'>
+    <%= render 'layouts/messages' %>
+   
+    <%= yield %>
+  </div>
 
+  </main>
 </body>
 </html>
