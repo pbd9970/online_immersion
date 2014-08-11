@@ -2,15 +2,16 @@ class ChatroomsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :correct_user?
 
-  def index
-  end
-
   def create
-    @chatroom = Chatroom.find_by(language_id: params[:language].to_i, matched: false)
+    @chatroom = Chatroom.find_by(language_id: params[:language_id].to_i, matched: false, concluded: false)
     if @chatroom
-      @chatroom.update(matched: true)
+      @chatroom = @chatroom.first if @chatroom.respond_to? :first
+      unless @chatroom.user_ids.include?(@user.id)
+        @user.chatrooms << @chatroom
+        @chatroom.update(matched: true)
+      end
     else
-      @chatroom = Chatroom.create(chatroom_params)
+      @chatroom = @user.chatrooms.create(params[:language_id])
     end
     redirect_to user_chatroom_path(@user, @chatroom)
   end
@@ -29,11 +30,5 @@ class ChatroomsController < ApplicationController
   end
 
   def destroy
-  end
-
-  private
-
-  def chatroom_params
-    params.require(:language_id).permit(:matched)
   end
 end
