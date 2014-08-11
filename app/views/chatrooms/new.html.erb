@@ -1,17 +1,25 @@
-<h3 class='strong'>Welcome to Online Immersion, <%= @user.first_name %>.</h3>
+<% content_for :title do %>
+  <%= "| Start" %>
+<% end %>
+
+<h2 class='strong'>&emsp;Welcome to Online Immersion, <%= @user.first_name %></h2>
 <br />
-<br />
-<div class='container'>
-  <div class='col-md-7 container'>
-    <h4>Get started by choosing a language for a video chat</h4>
-    <p>...................................</p>
-      <% @supported_languages.each do |language| %>
-        <div class='col-md-4 text-center'><p>
-          <%= button_to [@user, :chatrooms], params: {language_id: language.id}, class: 'btn btn-lg btn-primary' do %>
-            <%= language.name %>
-          <% end %>
-        </p></div>
-      <% end %>
+<div class='container-fluid'>
+  <div class='col-md-7'>
+    <div class='panel panel-info'>
+      <div class='panel-heading'>
+        <h3 class='panel-title'>Get started by choosing a language for a video chat</h3>
+      </div>
+      <div class='panel-body'>
+        <% @supported_languages.each do |language| %>
+          <div class='col-md-4 text-center'><p>
+            <%= button_to [@user, :chatrooms], params: {language_id: language.id}, class: 'btn btn-lg btn-primary' do %>
+              <%= language.name %>
+            <% end %>
+          </p></div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class='col-md-5'>
     <%= image_tag image_path 'http://placekitten.com/450/300' %>
