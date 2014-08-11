@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
   has_many :tokens
+  has_many :chatroom_users
+  has_many :chatrooms, through: :chatroom_users
 
-  def self.create_with_omniauth(auth, provider)
+  def self.create_with_omniauth(auth)
     create! do |user|
-      case provider.to_sym
+      case auth[:provider].to_sym
       when :facebook
         if auth['info']
           user.first_name = auth['info']['first_name'] || ""
