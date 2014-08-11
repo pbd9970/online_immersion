@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
 
   def new
     case params[:provider]
@@ -18,7 +18,7 @@ class SessionController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
-    token = get_token(auth, params[:provider])
+    token = get_token(auth)
 
     reset_session
     session[:user_id] = token.user.id
@@ -33,25 +33,22 @@ class SessionController < ApplicationController
 
   private
 
-  def get_token(auth, provider)
+  def get_token(auth)
     token_id = {uid: auth['uid'], provider: auth['provider']}
     token = Token.find_by(token_id) || Token.create(token_id)
 
     get_token_credentials(token, auth['credentials'])
-    verify_user(token, auth, provider)
+    verify_user(token, auth)
     
     token
   end
 
   def get_token_credentials(token, credentials)
-    token.update! do |t|
-      t.token_key = credentials.token
-      t.token_expiration = credentials.expires_at
-    end
+    token.update({token_key: credentials.token, token_expiration: credentials.expires_at})
   end
 
-  def verify_user(token, auth, provider)
-    token.user ||= User.create_with_omniauth(auth, provider)
+  def verify_user(token, auth)
+    token.user ||= User.create_with_omniauth(auth)
     token.save
   end
 end
