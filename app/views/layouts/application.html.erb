@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html>
 <head>
   <title>OnlineImmersion <%= yield :title %></title>
   <meta name="description" content="An instant new friend in another language.">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,5 +19,6 @@
   </div>
 
   </main>
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>
