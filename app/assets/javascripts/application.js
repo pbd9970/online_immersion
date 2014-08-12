@@ -10,8 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require socket.io
 //= require angular
 //= require angular-ui-bootstrap
 //= require angular-animate
 //= require angular-resource
+//= require SIPml-api
+//= require turbolinks
 //= require_tree .
