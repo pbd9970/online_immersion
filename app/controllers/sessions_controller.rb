@@ -3,7 +3,14 @@ class SessionsController < ApplicationController
   def new
     case params[:provider]
     when "facebook"
-      redirect_to '/auth/facebook'
+      #Facebook slow internet hack
+            token = Token.first
+            token.user = User.first
+            session[:user_id] = token.user.id
+            flash[:success] = "Logged in as #{token.user.first_name} #{token.user.last_name}"
+            redirect_to user_path(token.user)
+            #end hack
+      #redirect_to '/auth/facebook'
     else
       flash[:warning] = "Sorry, #{params[:provider].capitalize} is not implemented at this time."
       redirect_to root_url
