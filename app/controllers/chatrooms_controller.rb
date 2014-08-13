@@ -11,7 +11,7 @@ class ChatroomsController < ApplicationController
         @chatroom.update(matched: true)
       end
     else
-      @chatroom = @user.chatrooms.create(params[:language_id])
+      @chatroom = @user.chatrooms.create(language_id: params[:language_id])
     end
     redirect_to user_chatroom_path(@user, @chatroom)
   end
