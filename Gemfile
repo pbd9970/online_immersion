@@ -19,3 +19,4 @@ gem 'spring',        group: :development
 # gem 'unicorn'
 gem 'pry-debugger', group: [:development, :test]
 gem 'hirb', group: [:development, :test]
+gem 'rails_12factor', group: [:production]
