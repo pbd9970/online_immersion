@@ -32,6 +32,8 @@ function TextChatCtrl($scope, socket) {
     }
   });
 
+  $scope.messages = [];
+
   $scope.sendMessage = function () {
     socket.emit('send:message', {
       message: $scope.message
