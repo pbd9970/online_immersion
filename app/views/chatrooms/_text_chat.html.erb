@@ -1,0 +1,21 @@
+<div ng-controller="TextChatCtrl">
+  <div class='panel panel-primary'>
+    <div class='panel-heading'>
+      <h4 class='panel-title text-center'>Messages</h4>
+    </div>
+    <div class='panel-body overflowable'>
+      <p ng-repeat="message in messages" ng-class='{alert: message.user == "chatroom"}'>{{message.user}}: {{message.text}}</p>
+    </div>
+    <div class='panel-footer'>
+      <form ng-submit="sendMessage()" class='form-inline'>
+        <div class='input-group'>
+          <label for='Msg' class='input-group-addon'>Msg</label>
+          <input type='text' id='Msg' class='form-control' placeholder='Enter new message...' ng-model="message"/>
+          <span class='input-group-btn'>
+            <button type='submit' value='Send' class='btn btn-success'>Send</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
