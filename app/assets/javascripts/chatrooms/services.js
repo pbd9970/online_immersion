@@ -1,5 +1,5 @@
 app.factory('socket', function ($rootScope) {
-  var socket = io.connect('http://stream.mks.dev:3000');
+  var socket = io.connect('http://online-immersion-stream.herokuapp.com');
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {
