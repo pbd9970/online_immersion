@@ -1,16 +1,30 @@
-SIPml.init(
-    function(e){
-      var stack =  new SIPml.Stack({realm: 'example.org', impi: 'bob', impu: 'sip:bob@example.org', password: 'mysecret',
-        events_listener: { events: 'started', listener: function(e){
-          var callSession = stack.newSession('call-audiovideo', {
-            video_local: document.getElementById('video-local'),    // <video id="video-local" .../>
-            video_remote: document.getElementById('video-remote'), // <video id="video-remote" .../>
-            audio_remote: document.getElementById('audio-remote') // <audio id="audio-remote" .../>
+var videoInit = function (realmVal, impiVal, impuVal, passwordVal, friend) {
+  var videoChat = {}
+  SIPml.init(function(e){
+    var stack =  new SIPml.Stack({
+      realm: realmVal,
+      impi: impiVal,
+      impu: impuVal,
+      password: passwordVal,
+      events_listener: {
+        events: 'started',
+        listener: function(e){
+          videoChat.session = stack.newSession('call-audiovideo', {
+            video_local : document.getElementById('video-local' ),
+            video_remote: document.getElementById('video-remote'),
+            audio_remote: document.getElementById('audio-remote')
+
+            if (friend) {
+              videoChat.session.call(friend);
+            } else {
+              videoChat.listen();
           });
-        callSession.call('alice');
         } 
       }
     });
     stack.start();
-  }
-);
+  });
+  return videoChat;
+};
+videoChat = videoInit('example.org', 'bob', 'sip:bob@example.org', 'mysecret')
+videoChat.session.call('alice')

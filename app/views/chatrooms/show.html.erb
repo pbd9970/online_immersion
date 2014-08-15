@@ -2,14 +2,22 @@
   <%= "| Chatroom" %>
 <% end %>
 
-<div ng-app="chatbox">
+<script>
+  var metaData = {
+    userId: <%= @user.id %>,
+    chatroomId: <%= @chatroom.id %>,
+    path: '<%= request.path %>'
+  };
+</script>
+
+<div ng-app="chatbox" ng-controller="PageCtrl">
   <div class='col-xs-12'>
-    <% render 'chatroom_header' %>
+    <%= render 'chatroom_header' %>
   </div>
-  <div class='col-md-7'>
-    <% render 'video_chat' %>
+  <div class='col-sm-7'>
+    <%= render 'video_chat' %>
   </div>
-  <div class='col-md-5'>
+  <div class='col-sm-5'>
     <%= render 'text_chat' %>
   </div>
 </div>

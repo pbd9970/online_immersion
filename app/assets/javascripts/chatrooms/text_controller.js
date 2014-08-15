@@ -1,7 +1,7 @@
 function TextChatCtrl($scope, socket) {
 
   socket.on('init', function (data) {
-    $scope.name = data.name;
+    $scope.$parent.name = data.name;
     $scope.users = data.users;
   });
 
