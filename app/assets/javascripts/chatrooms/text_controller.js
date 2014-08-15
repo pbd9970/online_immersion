@@ -1,4 +1,4 @@
-function ChatboxCtrl($scope, socket) {
+function TextChatCtrl($scope, socket) {
 
   socket.on('init', function (data) {
     $scope.name = data.name;
