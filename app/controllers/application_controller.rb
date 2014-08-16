@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
       begin
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
       rescue Exception => e
-        nil
+        flash[:alert] = "Unauthorized user"
+        redirect_to root_url
       end
     end
 
@@ -24,13 +25,15 @@ class ApplicationController < ActionController::Base
       user_id = params[:user_id] || params[:id]
       @user = User.find(user_id)
       unless current_user == @user
-        redirect_to root_url, :alert => "Access denied."
+        flash[:alert] = "Access denied"
+        redirect_to root_url
       end
     end
 
     def authenticate_user!
       if !current_user
-        redirect_to root_url, :alert => 'You need to sign in for access to this page.'
+        flash[:alert] = "You need to sign in for access to this page."
+        redirect_to root_url
       end
     end
 
