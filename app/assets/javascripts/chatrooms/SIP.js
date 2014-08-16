@@ -17,7 +17,7 @@ var videoInit = function (realmVal, impiVal, impuVal, passwordVal, friend) {
           if (friend) {
             videoChat.session.call(friend);
           } else {
-            videoChat.listen();
+            videoChat;
           }
         } 
       }
