@@ -13,13 +13,12 @@ var videoInit = function (realmVal, impiVal, impuVal, passwordVal, friend) {
             video_local : document.getElementById('video-local' ),
             video_remote: document.getElementById('video-remote'),
             audio_remote: document.getElementById('audio-remote')
-
-            if (friend) {
-              videoChat.session.call(friend);
-            } else {
-              videoChat.listen();
-            }
           });
+          if (friend) {
+            videoChat.session.call(friend);
+          } else {
+            videoChat.listen();
+          }
         } 
       }
     });
@@ -28,4 +27,4 @@ var videoInit = function (realmVal, impiVal, impuVal, passwordVal, friend) {
   return videoChat;
 };
 videoChat = videoInit('example.org', 'bob', 'sip:bob@example.org', 'mysecret')
-videoChat.session.call('alice')
+//videoChat.session.call('alice')
