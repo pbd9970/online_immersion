@@ -6,6 +6,10 @@
 <h1>Online Immersion</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 <%= link_to 'facebook/login', class: "btn btn-primary btn-lg", id: "Facebook" do %>
-    <%= image_tag image_path 'fb_logos/png/FB-f-Logo__white_29.png' %>
-    Login with Facebook
+  <span class='icon'><%= image_tag image_path('logos/png/FB-f-Logo__white_29.png'), alt:'Facebook logo' %></span>
+  Login with Facebook
+<% end %>
+<%= link_to 'google/login', class: "btn btn-primary btn-lg", id: "Google" do %>
+  <span class='icon'><%= image_tag image_path('logos/png/google_btn_red_32.png'), alt:'Google logo' %></span>
+  Login with <span class='google'>Google+</span>
 <% end %>

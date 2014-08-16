@@ -1,30 +1,51 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.icon {
+  vertical-align: middle;
+  margin-left: -0.5rem;
+  padding-right: 0.5rem;
+}
 
 $facebook: #3B5998;
 #Facebook {
-    background-color: $facebook;
-    border-color: darken($facebook, 20%);
-    &:hover {
-       background-color: darken($facebook, 5%);
-   }
+  margin-right: 1rem;
+  background-color: $facebook;
+  border-color: darken($facebook, 20%);
+  &:hover {
+    background-color: darken($facebook, 5%);
+  }
+  span.icon {
+    border-right: darken($facebook, 20%) 1px solid;
+  }
 }
 
 $twitter: #33CCFF;
 #Twitter {
-    background-color: $twitter;
-    border-color: darken($twitter, 15%);
-    &:hover {
-       background-color: darken($twitter, 10%);
-   }
+  margin-right: 1rem;
+  background-color: $twitter;
+  border-color: darken($twitter, 15%);
+  &:hover {
+     background-color: darken($twitter, 10%);
+  }
+  span.icon {
+    border-right: darken($twitter, 30%) 1px solid;
+  }
 }
 
 $google: #DD4B39;
 #Google {
-    background-color: $google;
-    border-color: darken($google, 15%);
-    &:hover {
-       background-color: darken($google, 5%);
-   }
+  margin-right: 1rem;
+  background-color: $google;
+  border-color: darken($google, 15%);
+  span.google {
+    font-family: 'Roboto',arial,sans-serif;
+    font-weight: bold;
+  }
+  &:hover {
+    background-color: #E74B37;
+  }
+  span.icon {
+    border-right: #BB3F30 1px solid;
+  }
 }

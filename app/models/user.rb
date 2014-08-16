@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
           user.first_name = auth['info']['first_name'] || ""
           user.last_name = auth['info']['last_name'] || ""
         end
+      when :google
+        require 'pry-debugger'; binding.pry
+        if auth['info']
+          user.first_name = auth['info']['first_name'] || ""
+          user.last_name = auth['info']['last_name'] || ""
+        end
       when :twitter
         raise NotImplementedError
       else

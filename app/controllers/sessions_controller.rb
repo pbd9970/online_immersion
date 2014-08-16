@@ -4,6 +4,8 @@ class SessionsController < ApplicationController
     case params[:provider]
     when "facebook"
       redirect_to '/auth/facebook'
+    when "google"
+      redirect_to '/auth/google_oauth2'
     else
       flash[:warning] = "Sorry, #{params[:provider].capitalize} is not implemented at this time."
       redirect_to root_url
