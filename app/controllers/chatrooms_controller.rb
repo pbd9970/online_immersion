@@ -3,16 +3,12 @@ class ChatroomsController < ApplicationController
   before_filter :correct_user?
 
   def create
-    @chatroom = Chatroom.find_by(language_id: params[:language_id].to_i, matched: false, concluded: false)
-    if @chatroom
-      @chatroom = @chatroom.first if @chatroom.respond_to? :first
-      unless @chatroom.user_ids.include?(@user.id)
-        @user.chatrooms << @chatroom
-        @chatroom.update(matched: true)
-      end
-    else
-      @chatroom = @user.chatrooms.create(language_id: params[:language_id])
-    end
+    chat_args = {language_id: params[:language_id].to_i, matched: false, concluded: false}
+    cu = :chatroom_users
+    @chatroom = Chatroom.where(chat_args).joins(cu).where.not(cu => {user_id: 1}).take
+    @chatroom.update(matched: true) if @chatroom.present?
+    @chatroom ||= Chatroom.create(chat_args)
+    @user.chatrooms << @chatroom
     redirect_to user_chatroom_path(@user, @chatroom)
   end
 
