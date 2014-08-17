@@ -16,5 +16,4 @@
 //= require angular-animate
 //= require angular-resource
 //= require SIPml-api
-//= require turbolinks
 //= require_tree .
