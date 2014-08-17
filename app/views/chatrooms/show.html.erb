@@ -2,20 +2,22 @@
   <%= "| Chatroom" %>
 <% end %>
 
-<div ng-app="chatroom" ng-controller="PageCtrl" class='row'>
-  <div class='col-sm-12'>
-    <div class='row'>
-      <%= render 'chatroom_header' %>
+<div ng-app="chatroom">
+  <div ng-controller="PageCtrl" class='row'>
+    <div class='col-sm-12'>
+      <div class='row'>
+        <%= render 'chatroom_header' %>
+      </div>
     </div>
-  </div>
-  <div class='col-sm-7'>
-    <div class='row'>
-      <%= render 'video_chat' %>
+    <div class='col-sm-7'>
+      <div class='row'>
+        <%= render 'video_chat' %>
+      </div>
     </div>
-  </div>
-  <div class='col-sm-5'>
-    <div class='row'>
-      <%= render 'text_chat' %>
+    <div class='col-sm-5'>
+      <div class='row'>
+        <%= render 'text_chat' %>
+      </div>
     </div>
   </div>
 </div>
