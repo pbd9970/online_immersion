@@ -2,14 +2,20 @@
   <%= "| Chatroom" %>
 <% end %>
 
-<div ng-app="chatroom" ng-controller="PageCtrl">
-  <div class='container-fluid'>
-    <%= render 'chatroom_header' %>
+<div ng-app="chatroom" ng-controller="PageCtrl" class='row'>
+  <div class='col-sm-12'>
+    <div class='row'>
+      <%= render 'chatroom_header' %>
+    </div>
   </div>
   <div class='col-sm-7'>
-    <%= render 'video_chat' %>
+    <div class='row'>
+      <%= render 'video_chat' %>
+    </div>
   </div>
   <div class='col-sm-5'>
-    <%= render 'text_chat' %>
+    <div class='row'>
+      <%= render 'text_chat' %>
+    </div>
   </div>
 </div>

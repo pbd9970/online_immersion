@@ -1,1 +1,1 @@
-var app = angular.module('chatbox', ['chatbox.filters', 'chatbox.directives']);
+var app = angular.module('chatroom', ['chatroom.filters', 'chatroom.directives']);

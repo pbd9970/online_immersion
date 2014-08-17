@@ -1,4 +1,4 @@
-angular.module('chatbox.directives', []).
+angular.module('chatroom.directives', []).
   directive('appVersion', ['version', function(version) {
     return function(scope, elm, attrs) {
       elm.text(version);
