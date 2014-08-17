@@ -2,16 +2,8 @@
   <%= "| Chatroom" %>
 <% end %>
 
-<script>
-  var metaData = {
-    userId: <%= @user.id %>,
-    chatroomId: <%= @chatroom.id %>,
-    path: '<%= request.path %>'
-  };
-</script>
-
-<div ng-app="chatbox" ng-controller="PageCtrl">
-  <div class='col-xs-12'>
+<div ng-app="chatroom" ng-controller="PageCtrl">
+  <div class='container-fluid'>
     <%= render 'chatroom_header' %>
   </div>
   <div class='col-sm-7'>
