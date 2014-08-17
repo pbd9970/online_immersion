@@ -41,15 +41,16 @@ class SessionsController < ApplicationController
   def set_api_key(user_id)
     api_key = ApiKey.generate(user_id)
     cookies[:api_key] = {
-      value: api_key 
+      value: api_key,
       domain: :all
     }
   end
 
   def delete_api_key
+    return
     api_key = ApiKey.find_by(value: cookies[:api_key])
-    api_key.delete
-    cookies.delete :api_key, domain: :all
+    api_key.delete if api_key
+    cookies.delete :api_key, {domain: :all} if cookies[:api_key]
   end
 
   def get_token(auth)
