@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :tokens
+  has_many :api_keys
   has_many :chatroom_users
   has_many :chatrooms, through: :chatroom_users
 

@@ -13,8 +13,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    flash[:info] = 'We hope you enjoyed Online Immersion!' if current_user
     reset_session
-    flash[:info] = 'We hope you enjoyed Online Immersion!'
+    delete_api_key
     redirect_to root_url
   end
 
@@ -24,6 +25,8 @@ class SessionsController < ApplicationController
 
     reset_session
     session[:user_id] = token.user.id
+    set_api_key(token.user.id)
+
     flash[:success] = "Logged in as #{token.user.first_name} #{token.user.last_name}"
     redirect_to user_path(token.user)
   end
@@ -34,6 +37,20 @@ class SessionsController < ApplicationController
   end
 
   private
+
+  def set_api_key(user_id)
+    api_key = ApiKey.generate(user_id)
+    cookies[:api_key] = {
+      value: api_key 
+      domain: :all
+    }
+  end
+
+  def delete_api_key
+    api_key = ApiKey.find_by(value: cookies[:api_key])
+    api_key.delete
+    cookies.delete :api_key, domain: :all
+  end
 
   def get_token(auth)
     token_id = {uid: auth['uid'], provider: auth['provider']}
