@@ -46,7 +46,9 @@ class SessionsController < ApplicationController
   end
 
   def get_token_credentials(token, credentials)
-    token.update({token_key: credentials.token, token_expiration: credentials.expires_at})
+    token.update(
+      {token_key: credentials.token,
+       token_expiration: credentials.expires_at})
   end
 
   def verify_user(token, auth)

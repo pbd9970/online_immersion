@@ -5,19 +5,13 @@ class User < ActiveRecord::Base
 
   def self.create_with_omniauth(auth)
     create! do |user|
-      case auth[:provider].to_sym
-      when :facebook
+      case auth[:provider]
+      when "facebook", "google_oauth2"
         if auth['info']
           user.first_name = auth['info']['first_name'] || ""
           user.last_name = auth['info']['last_name'] || ""
         end
-      when :google_oauth2
-        require 'pry-debugger'; binding.pry
-        if auth['info']
-          user.first_name = auth['info']['first_name'] || ""
-          user.last_name = auth['info']['last_name'] || ""
-        end
-      when :twitter
+      when "twitter"
         raise NotImplementedError
       else
         raise NotImplementedError
