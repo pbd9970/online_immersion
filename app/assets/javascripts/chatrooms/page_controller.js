@@ -1,7 +1,9 @@
 function PageCtrl($scope, socket) {
-  $scope.user = {
-    id: metaData.userId
+
+  $scope.friend = {
+    name: "Waiting..."
   }
+
   $scope.sendMessage = function () {
     socket.emit('send:message', {
       message: $scope.message
