@@ -12,8 +12,7 @@ class ApplicationController < ActionController::Base
       begin
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
       rescue Exception => e
-        flash[:alert] = "Unauthorized user"
-        redirect_to root_url
+        nil
       end
     end
 
