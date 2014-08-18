@@ -1,7 +1,9 @@
-<div class='page-header'>
+<div class='jumbotron container'>
   <h2>
-      <small class='col-xs-3 text-left'><%= @user.first_name %></small>
-      <span class='col-xs-6 text-center'><%= @chatroom.language.name %> Immersion</span>
-      <small class='col-xs-3 text-right' ng-model="friend.name">{{ friend.name }}</small>
+      <small class='col-xs-4 text-left'><%= @user.first_name %></small>
+      <span class='col-xs-4 text-center'><%= @chatroom.language.name %> Immersion</span>
+      <small class='col-xs-4 text-right' ng-model="friend.name">{{ friend.name }}
+        <br /><a ng-show='friend.name'><sub>Report abuse</sub></a>
+      </small>
   </h2>
 </div>
