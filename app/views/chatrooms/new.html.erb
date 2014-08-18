@@ -2,26 +2,33 @@
   <%= "| Start" %>
 <% end %>
 
-<h2 class='strong'>&emsp;Welcome to Online Immersion, <%= @user.first_name %></h2>
-<br />
-<div class='container-fluid'>
-  <div class='col-md-7'>
-    <div class='panel panel-info'>
-      <div class='panel-heading'>
-        <h3 class='panel-title'>Get started by choosing a language for a video chat</h3>
-      </div>
-      <div class='panel-body'>
-        <% @supported_languages.each do |language| %>
-          <div class='col-md-4 col-xs-6 text-center'><p>
-            <%= button_to [@user, :chatrooms], params: {language_id: language.id}, class: 'btn btn-lg btn-primary' do %>
-              <%= language.name %>
-            <% end %>
-          </p></div>
-        <% end %>
+<div class='row'>
+  <div class='col-sm-12'>
+    <div class='row'>
+      <div class='jumbotron container'>
+        <h2 class='strong'>&emsp;&emsp;Welcome to Online Immersion, <i><%= @user.first_name %></i></h2>
       </div>
     </div>
   </div>
-  <div class='col-md-5'>
-    <%= image_tag image_path 'http://placekitten.com/450/300' %>
+  <div class='row'>
+    <div class='col-md-6'>
+      <div class='panel panel-info'>
+        <div class='panel-heading'>
+          <h3 class='panel-title'>Get started by choosing a language for a video chat</h3>
+        </div>
+        <div class='panel-body'>
+          <% @supported_languages.each do |language| %>
+            <div class='col-sm-4 col-xs-6 text-center'><p>
+              <%= button_to [@user, :chatrooms], params: {language_id: language.id}, class: 'btn btn-lg btn-primary' do %>
+                <%= language.name %>
+              <% end %>
+            </p></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-6'>
+      <%= image_tag image_path('http://placekitten.com/950/600'), class: 'img-responsive'%>
+    </div>
   </div>
 </div>
