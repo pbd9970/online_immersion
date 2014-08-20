@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   # ReSTful user and chatrooms routes
   resources :users, only: [:show, :edit, :update, :destroy] do
-    resources :chatrooms
+    resources :chatrooms, except: [:edit, :update]
   end
+
+  get '/users/:user_id/chatrooms/:id/view', to: 'chatrooms#ng_view'
 
   # Login/logout through OAUTH
   get '/:provider/login',         to: 'sessions#new',     as: :login
