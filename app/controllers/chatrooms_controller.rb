@@ -12,12 +12,7 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    chat_args = {language_id: params[:language_id].to_i, matched: false, concluded: false}
-    cu = :chatroom_users
-    @chatroom = Chatroom.where(chat_args).joins(cu).where.not(cu => {user_id: 1}).take
-    @chatroom.update(matched: true) if @chatroom.present?
-    @chatroom ||= Chatroom.create(chat_args)
-    @user.chatrooms << @chatroom
+    @chatroom = get_user_chatroom(@user, params[:language_id])
     
     # Give angular control of application
     session[:chatroom_id] = @chatroom.id
@@ -31,7 +26,7 @@ class ChatroomsController < ApplicationController
   def show
     # Give angular control of application
     session[:chatroom_id] = params[:id]
-    redirect_to "#{user_chatrooms_path(@user)}/#/#{@chatroom.id}"
+    redirect_to "#{user_chatrooms_path(@user)}/#/#{params[:id]}"
   end
 
   def destroy
@@ -47,5 +42,23 @@ class ChatroomsController < ApplicationController
     else
       redirect_to new_user_chatroom_path(@user)
     end
+  end
+
+  private
+
+  def get_user_chatroom(user, lang)
+    # helper vars so that query isn't too long
+    chat_args = {language_id: lang.to_i, matched: false, concluded: false}
+    cu = :chatroom_users
+
+    #query and immediately update
+    chatroom = Chatroom.where(chat_args).joins(cu).where.not(cu => {user_id: user.id}).take
+    if chatroom.present?
+      chatroom.update(matched: true) 
+    else
+      chatroom = Chatroom.create(chat_args)
+    end
+    user.chatrooms << chatroom
+    chatroom
   end
 end

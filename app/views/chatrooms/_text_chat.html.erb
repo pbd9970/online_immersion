@@ -1,9 +1,9 @@
-<div class='panel panel-primary' ng-controller="TextChatCtrl">
+<div class='panel panel-primary'>
   <div class='panel-heading'>
     <h4 class='panel-title text-center'>Messages</h4>
   </div>
   <div class='panel-body overflowable'>
-    <p ng-repeat="message in messages" ng-class='{alert: message.user == "chatroom"}'>{{message.user}}: {{message.text}}</p>
+    <p ng-repeat="message in messages" class='alert' ng-class="{alert: message.user == 'chatroom'}">{{message.user}}: {{message.text}}</p>
   </div>
   <div class='panel-footer'>
     <form ng-submit="sendMessage()" class='form-inline'>

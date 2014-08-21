@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       @user = User.find(user_id)
       unless current_user == @user
         flash[:alert] = "Access denied"
-        redirect_to root_url
+        redirect_to logout_path
       end
     end
 

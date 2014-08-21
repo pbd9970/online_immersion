@@ -1,9 +1,21 @@
 <div class='jumbotron container'>
   <h2>
-      <small class='col-xs-4 text-left'><%= @user.first_name %></small>
-      <span class='col-xs-4 text-center'><%= @chatroom.language.name %> Immersion</span>
-      <small class='col-xs-4 text-right' ng-model="friend.name">{{ friend.name }}
-        <br /><a ng-show='friend.name'><sub>Report abuse</sub></a>
-      </small>
+    <small class='col-xs-4 text-left' ng-model="user.name" ng-init="user.userName='<%= @user.first_name %>'; user.userId='<%= @user.id %>'">
+      {{ user.userName }}
+    </small>
+    <span class='col-xs-4 text-center' ng-model = 'chatroom.language' ng-init="chatroom.language='<%= @chatroom.language.name %>'">{{ chatroom.language }} Immersion</span>
+    <small class='col-xs-4 text-right' ng-model="friend.name">{{ friend.userName }}
+      <br /><a ng-show='friend.name'><sub>Report abuse</sub></a>
+    </small>
   </h2>
+</div>
+<div class='row'>
+  <div class='col-xs-3 text-center'></div>
+  <div class='col-xs-6 text-center'></div>
+  <div class='col-xs-3 text-center'>
+    <%= button_to new_user_chatroom_path(@user), class: 'btn btn-small secondary', remote: true do%>
+      New Chat
+    <% end %>
+  </div>
+  <div class='col-xs-3 text-center'>
 </div>
