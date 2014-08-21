@@ -9,7 +9,6 @@ app.controller('VideoChatCtrl', ['$scope', 'socket', function ($scope, socket) {
           listener: function(e){
             if (e.type == 'started') {
               if ($scope.$parent.startCall) {
-                debugger;
                 callSession = stack.newSession('call-audiovideo', {
                   video_local : document.getElementById('video-local'),
                   video_remote: document.getElementById('video-remote'),
@@ -24,7 +23,6 @@ app.controller('VideoChatCtrl', ['$scope', 'socket', function ($scope, socket) {
                     listener: function(e) {
                       if (e.type == 'i_new_call') {
                         e.newSession.accept();
-                        debugger;
                       }
                     }
                   }
