@@ -30,7 +30,7 @@ app.controller('PageCtrl', ['$scope', '$route', '$routeParams', function ($scope
         $scope.friend.userName = data[userId].userName;
         $scope.startCall = true;
         $scope.friend.callName = $scope.friend.userName + '_' + $scope.friend.userId;
-        $scope.$emit('call:init');
+        $scope.$emit('call:init', $scope.friend.callName);
       } 
       data[userId] = data[userId].userName;
     }
