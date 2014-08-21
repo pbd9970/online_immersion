@@ -1,5 +1,4 @@
 app.controller('VideoChatCtrl', ['$scope', 'socket', function ($scope, socket) {
-  socket.connect('http://' + $scope.$parent.streamUrl + '/video', {})
   var callSession;
   $scope.videoInit = function (realmVal, impiVal, impuVal, passwordVal, friend) {
     SIPml.init(function(e){
