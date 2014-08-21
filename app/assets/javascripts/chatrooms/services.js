@@ -3,7 +3,7 @@ app.factory('socket', function ($rootScope) {
 
   return {
     connect: function(url, params) {
-      socket = io.connect(url, params);
+      socket = io.connect(url, { query: params } );
     },
     on: function (eventName, callback) {
       socket.on(eventName, function () {
