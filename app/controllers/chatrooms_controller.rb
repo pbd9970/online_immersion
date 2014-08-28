@@ -35,10 +35,10 @@ class ChatroomsController < ApplicationController
     redirect_to new_user_chatroom_path(@user)
   end
 
-  def ng_view
+  def angular_view
     @chatroom = Chatroom.find(params[:id])
     if @chatroom
-      render :show, layout: false
+      render partial: params[:view], layout: false
     else
       redirect_to new_user_chatroom_path(@user)
     end

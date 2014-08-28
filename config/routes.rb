@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :chatrooms, except: [:edit, :update]
   end
 
-  get '/users/:user_id/chatrooms/:id/view', to: 'chatrooms#ng_view'
+  get '/users/:user_id/chatrooms/:id/views/:view', to: 'chatrooms#angular_view'
 
   # Login/logout through OAUTH
   get '/:provider/login',         to: 'sessions#new',     as: :login
