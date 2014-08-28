@@ -6,7 +6,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     when('/:chatroomId', {
       controller: 'PageCtrl',
       templateUrl: function(urlParams) {
-        return urlParams.chatroomId + "/view";
+        return urlParams.chatroomId + "/views/page";
       },
     }).
     otherwise({
