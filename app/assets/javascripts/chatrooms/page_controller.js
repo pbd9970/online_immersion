@@ -1,7 +1,7 @@
 app.controller('PageCtrl', ['$scope', '$route', '$routeParams', function ($scope, $route, $routeParams) {
 
-  $scope.streamUrl = "stream.mks.dev";
-  $scope.SIP_Url = "stream.mks.dev";
+  $scope.streamUrl = "online-immersion-stream.herokuapp.com";
+  $scope.SIP_Url = "online-immersion-stream.herokuapp.com";
   $scope.startCall = false;
   $scope.chatroom = {
     chatroomId : $routeParams.chatroomId || $route.current.params.chatroomId
