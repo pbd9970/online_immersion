@@ -19,5 +19,5 @@
 //= require SIPml-api
 //= require angular-ui-bootstrap
 //= require bootstrap.min
-//= chatrooms
+//= online_immersion_module
 //= require_tree .
