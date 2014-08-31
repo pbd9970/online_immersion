@@ -1,7 +1,9 @@
-app.directive(['scope', function(scope, socket) {
+app.directive('textChat', function() {
   return {
+    restrict: 'E',
     templateUrl: 'views/text_chat',
-    controller: function TextChatCtrl ($scope, socket) {
+    scope: {},
+    controller: function ($scope, socket) {
 
       // Connect to Node WebSocket
       // socket.connect("http://online-immersion-stream.herokuapp.com", {
