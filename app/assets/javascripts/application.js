@@ -20,4 +20,7 @@
 //= require angular-ui-bootstrap
 //= require bootstrap.min
 //= online_immersion_module
-//= require_tree .
+//= require_tree ./services
+//= require_tree ./filters
+//= require_tree ./controllers
+//= require_tree ./directives
