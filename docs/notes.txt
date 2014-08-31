@@ -1,0 +1,8 @@
+chatroom.js will declare module chatroom
+  * change name to online immersion?
+app.routes will call page_ctrl
+app.page_ctrl will be assigned to global variable
+all other ctrls will be called from within directives that inherit from
+app.page_ctrl. This will allow some directives to call transclude to operate in
+the page_ctrl's scope. It will also mean that all controllers will have the 
+page_ctrl as a parent.
