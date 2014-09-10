@@ -1,4 +1,4 @@
-app.controller('TextChatCtrl', ['$scope', 'socket', function ($scope, socket) {
+app.controller('textChatCtrl', ['$scope', 'socket', function ($scope, socket) {
 
   // Connect to Node WebSocket
   // socket.connect("http://online-immersion-stream.herokuapp.com", {

@@ -1,4 +1,4 @@
-app.controller('VideoChatCtrl', ['$scope', function ($scope) {
+app.controller('videoChatCtrl', ['$scope', function ($scope) {
   var callSession;
   $scope.videoInit = function (realmVal, impiVal, impuVal, passwordVal, friend) {
     SIPml.init(function(e){
