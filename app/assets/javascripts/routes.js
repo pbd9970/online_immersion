@@ -2,7 +2,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
   // $locationProvider.html5Mode(true);
   $routeProvider.
     when('/:chatroomId', {
-      controller: 'PageCtrl',
+      controller: 'pageCtrl',
       templateUrl: function(urlParams) {
         return urlParams.chatroomId + "/views/page";
       },

@@ -1,4 +1,4 @@
-app.controller('PageCtrl', ['$scope', '$route', '$routeParams', function ($scope, $route, $routeParams) {
+app.controller('pageCtrl', ['$scope', '$route', '$routeParams', function ($scope, $route, $routeParams) {
 
   $scope.streamUrl = "online-immersion-stream.herokuapp.com";
   $scope.SIP_Url = "online-immersion-stream.herokuapp.com";
