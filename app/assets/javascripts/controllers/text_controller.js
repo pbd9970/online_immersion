@@ -1,7 +1,6 @@
 app.controller('textChatCtrl', ['$scope', 'socket', function ($scope, socket) {
 
   // Connect to Node WebSocket
-  // socket.connect("http://online-immersion-stream.herokuapp.com", {
   socket.connect('http://' + $scope.$parent.streamUrl, "chatroomId="+ $scope.$parent.chatroom.chatroomId );
 
   // Initial connection with server supplies any messages
